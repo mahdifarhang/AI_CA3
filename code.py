@@ -70,7 +70,7 @@ def guess_type_of_sentence(spams, hams, words, num_of_spams, num_of_hams, spam_s
 	temp = len(words)
 	p_all_spams += temp / 3 * math.log(((spam_sizes[temp] if spam_sizes[temp] != 0 else 0.000001) / num_of_spams), 2)
 	p_all_hams += temp / 3 * math.log(((ham_sizes[temp] if ham_sizes[temp] != 0 else 0.000001) / num_of_hams), 2)
-	if (p_all_spams - p_all_hams > math.log(2, 2)):	
+	if (p_all_spams - p_all_hams > math.log(2, 2)):
 		return 'spam'
 	return 'ham'
 
@@ -86,7 +86,7 @@ def test(data, spams, hams, spam_sizes, ham_sizes):
 	result = []
 	for i in range(num_of_training_data, len(data)):
 		result.append(guess_type_of_sentence(spams, hams, data[i][1], num_of_spam, num_of_ham, spam_sizes, ham_sizes))
-	
+
 	total = len(result)
 	true_spam = 0
 	true_ham = 0
@@ -108,6 +108,7 @@ def test(data, spams, hams, spam_sizes, ham_sizes):
 	print('Recall = ', true_spam / (true_spam + false_spam))
 	print('Precision = ', true_spam / (true_spam + false_ham))
 	print('Accuracy = ', (true_spam + true_ham) / total)
+	# print(true_spam, true_ham, false_spam, false_ham)
 
 def check(input_file_name, output_file_name, spams, hams, spam_sizes, ham_sizes):
 	evaluate_data = getting_data(input_file_name, 'id')
@@ -129,23 +130,20 @@ def check(input_file_name, output_file_name, spams, hams, spam_sizes, ham_sizes)
 
 t1 = time()
 data = getting_data('train_test.csv', 'type')
-
 # if we were testing our train model, the line below should be commented
-# num_of_training_data = len(data)
-
+num_of_training_data = len(data)
 spams, hams, spam_sizes, ham_sizes = train(data)
 t2 = time()
 print('training time = ', t2 - t1)
 
-
 # for testing our training model.
-t1 = time()
-test(data, spams, hams, spam_sizes, ham_sizes)
-t2 = time()
-print('testing time = ', t2 - t1)
-
-
 # t1 = time()
-# check('evaluate.csv', 'out.csv', spams, hams, spam_sizes, ham_sizes)
+# test(data, spams, hams, spam_sizes, ham_sizes)
 # t2 = time()
-# print('checking time = ', t2 - t1)
+# print('testing time = ', t2 - t1)
+
+
+t1 = time()
+check('evaluate.csv', 'out.csv', spams, hams, spam_sizes, ham_sizes)
+t2 = time()
+print('checking time = ', t2 - t1)
