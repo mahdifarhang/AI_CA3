@@ -63,14 +63,11 @@ def train(data):
 	for i in range(80):
 		x[i] = i
 
-	plt.bar(x, num_of_spam_in_size, color = 'red')
-	plt.show() 
-	plt.bar(x, num_of_ham_in_size, color = 'green')
-
-	plt.show() 
-
-
-
+	# plt.bar(x, num_of_spam_in_size, color = 'red')
+	# plt.show() 
+	# plt.bar(x, num_of_ham_in_size, color = 'green')
+	# plt.show() 
+	
 	return spams, hams, num_of_spam_in_size, num_of_ham_in_size
 
 def guess_type_of_sentence(spams, hams, words, num_of_spams, num_of_hams, spam_sizes, ham_sizes):
