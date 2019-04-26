@@ -131,16 +131,17 @@ def check(input_file_name, output_file_name, spams, hams, spam_sizes, ham_sizes)
 t1 = time()
 data = getting_data('train_test.csv', 'type')
 # if we were testing our train model, the line below should be commented
-num_of_training_data = len(data)
+# num_of_training_data = len(data)
 spams, hams, spam_sizes, ham_sizes = train(data)
 t2 = time()
 print('training time = ', t2 - t1)
 
 # for testing our training model.
-# t1 = time()
-# test(data, spams, hams, spam_sizes, ham_sizes)
-# t2 = time()
-# print('testing time = ', t2 - t1)
+
+t1 = time()
+test(data, spams, hams, spam_sizes, ham_sizes)
+t2 = time()
+print('testing time = ', t2 - t1)
 
 
 t1 = time()
