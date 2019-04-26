@@ -144,7 +144,7 @@ t2 = time()
 print('testing time = ', t2 - t1)
 
 
-t1 = time()
-check('evaluate.csv', 'out.csv', spams, hams, spam_sizes, ham_sizes)
-t2 = time()
-print('checking time = ', t2 - t1)
+# t1 = time()
+# check('evaluate.csv', 'out.csv', spams, hams, spam_sizes, ham_sizes)
+# t2 = time()
+# print('checking time = ', t2 - t1)
